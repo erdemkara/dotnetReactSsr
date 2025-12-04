@@ -1,0 +1,29 @@
+@using System.Text.Json
+@{
+    Layout = null;
+    var serverData = ViewBag.ServerData;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+    else
+    {
+        <title>M-Suite | React SSR</title>
+    }
+    
+    <link rel="stylesheet" href="~/dist/styles.css" />
+</head>
+<body>
+    <div id="react-root">@Html.Raw(ViewBag.ServerRenderedHtml)</div>
+    
+    <script>
+        window.__INITIAL_DATA__ = @Html.Raw(JsonSerializer.Serialize(serverData));
+    </script>
+    <script src="~/dist/client.bundle.js"></script>
+</body>
+</html>
